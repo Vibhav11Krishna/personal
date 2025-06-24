@@ -947,3 +947,43 @@ background: #4a90e2;
   footer .social-icons a:hover {
     color: greenyellow;
   }
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Show nav as dropdown on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background-color: #5c6bc0;
+    padding: 15px 0;
+    gap: 15px;
+    text-align: center;
+  }
+
+  header nav.show {
+    display: flex;
+  }
+}
