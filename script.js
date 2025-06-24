@@ -54,3 +54,47 @@ document.querySelectorAll('nav a').forEach(link => {
         showSection(targetId);  // Show the clicked section
     });
 });
+/ Show the home section on load and animate it
+window.onload = function () {
+  showSection('home');
+
+  const homeSection = document.getElementById('home');
+  setTimeout(() => {
+    homeSection.classList.add('animate');
+  }, 50);
+
+  // Navigation click listeners
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      showSection(targetId);
+
+      // Hide nav on mobile after click
+      document.querySelector('header nav').classList.remove('show');
+    });
+  });
+};
+
+// Function to toggle hamburger menu
+function toggleMenu() {
+  document.querySelector('header nav').classList.toggle('show');
+}
+
+// Show one section and animate
+function showSection(sectionId) {
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => {
+    section.style.display = 'none';
+    section.classList.remove('animate');
+  });
+
+  const target = document.getElementById(sectionId);
+  if (target) {
+    target.style.display = 'block';
+    setTimeout(() => {
+      target.classList.add('animate');
+    }, 50);
+  }
+}
+
